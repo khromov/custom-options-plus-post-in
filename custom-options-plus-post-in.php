@@ -3,7 +3,7 @@
 Plugin Name: Custom Options Plus Post In
 Description: This plugin is create to custom options in your WordPress. You can use in the Template and Shortcode.
 Plugin URI: http://wordpress.org/plugins/custom-options-plus-post-in/
-Version: 1.3.1
+Version: 1.3.2
 Author: gqevu6bsiz
 Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=coppi&utm_campaign=1_3_1
 Text Domain: coppi
@@ -119,7 +119,7 @@ class Custom_Options_Plus_Post_In
 
 			$mofile = $this->TransFileCk();
 			if( $mofile == false ) {
-				$translation_link = '<a href="' . $this->AuthorUrl . 'please-translation/">Please translate</a>'; 
+				$translation_link = '<a href="' . $this->AuthorUrl . 'please-translation/">'. __('Translate this plugin', $this->ltd) .'</a>';
 				array_unshift( $links, $translation_link );
 			}
 			array_unshift( $links, '<a href="' . admin_url( 'options-general.php?page=' . $this->PageSlug ) . '">' . __( 'Settings' ) . '</a>' );
@@ -132,7 +132,7 @@ class Custom_Options_Plus_Post_In
 
 	// PluginSetup
 	function admin_menu() {
-		add_options_page( $this->Name , __( 'Custom Option' , $this->ltd ) . '(coppi)' , 'administrator' , $this->PageSlug , array( $this , 'coppi_setting') );
+		add_options_page( $this->Name , __( 'Custom Option' , $this->ltd ) . ' (coppi)' , 'administrator' , $this->PageSlug , array( $this , 'coppi_setting') );
 	}
 
 
@@ -393,9 +393,9 @@ class Custom_Options_Plus_Post_In
 							<th class="check-column"><input type="checkbox"></th>
 							<?php
 							$SortHeader = array(
-								array( "sort_type" => "create_date" , "sort_name" => __( 'Create Date' , $this->ltd ) ),
-								array( "sort_type" => "option_name" , "sort_name" => __( 'Option Name' , $this->ltd ) ),
-								array( "sort_type" => "option_value" , "sort_name" => __( 'Option Value' , $this->ltd ) ),
+								array( "sort_type" => "create_date" , "sort_name" => __( 'Creation Date' , $this->ltd ) ),
+								array( "sort_type" => "option_name" , "sort_name" => __( 'Option name' , $this->ltd ) ),
+								array( "sort_type" => "option_value" , "sort_name" => __( 'Option value' , $this->ltd ) ),
 							);
 							?>
 							<?php foreach( $SortHeader as $sorter ) : ?>
@@ -413,8 +413,8 @@ class Custom_Options_Plus_Post_In
 									</a>
 								</th>
 							<?php endforeach; ?>
-							<th class="template_tag"><?php _e( 'Tag of the template' , $this->ltd ); ?></th>
-							<th class="shortcode"><?php _e( 'Shortcode' , $this->ltd ); ?></th>
+							<th class="template_tag"><?php _e( 'PHP template tag' , $this->ltd ); ?></th>
+							<th class="shortcode"><?php _e( 'WP Shortcode' , $this->ltd ); ?></th>
 							<th class="operation">&nbsp;</th>
 						</tr>
 					</thead>
